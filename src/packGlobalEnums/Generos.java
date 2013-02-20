@@ -1,5 +1,5 @@
 package packGlobalEnums;
 
-public class Generos {
+public enum Generos {
 
 }

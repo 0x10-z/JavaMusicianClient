@@ -1,5 +1,5 @@
 package packGlobalEnums;
 
-public class Instrumentos {
+public enum Instrumentos {
 
 }
