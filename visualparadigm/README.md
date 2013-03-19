@@ -25,6 +25,7 @@ AÑADIDO:
 
 
 POR HACER:
+
 	-Todos los atributos de SuperGrupo se heredan a Grupo y Solista asi como sus metodos abstractos. Habra que implementarlos independientemente. (AUN NO)
 
 	-Decidir que tipo de lista sera listaIntegrantes de la clase Grupo. (AUN NO)
