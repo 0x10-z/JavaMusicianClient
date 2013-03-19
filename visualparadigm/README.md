@@ -20,19 +20,22 @@ AÑADIDO:
 
 	-Añadido un atributo esFavorito en Disco y Cancion que guarda el numero de favoritos que tiene. setEsFavorito() aumenta en 1 el atributo.
 
-	-Añadida una clase favorito con listaFavoritosCanciones y listaFavoritosDiscos que tienen un metodo actualizarListaCanciones() y actualizarListaDiscos() que comprueban el atributo esFavorito que contiene el numero de likes que tienen y los ordena por un algoritmo de ordenacion mayor a menor. 
+	-Añadida una clase favorito con listaFavoritosCanciones y listaFavoritosDiscos que tienen un metodo actualizarListaCanciones() y actualizarListaDiscos()
+	 que comprueban el atributo esFavorito que contiene el numero de likes que tienen y los ordena por un algoritmo de ordenacion mayor a menor. 
 
 
--------------POR HACER-----------------------
+POR HACER:
 	-Todos los atributos de SuperGrupo se heredan a Grupo y Solista asi como sus metodos abstractos. Habra que implementarlos independientemente. (AUN NO)
 
 	-Decidir que tipo de lista sera listaIntegrantes de la clase Grupo. (AUN NO)
 
-	-Los metodos setBiografia() y getBiografia() hay que pensar si mantenerlos o dejar solamente anadirHitoBiografia(pHito:string) donde se añade el hito automaticamente a la biografia como lista de string. Creo que mejor lo segundo (Si os parece bien, hacer diagrama de secuencia)
+	-Los metodos setBiografia() y getBiografia() hay que pensar si mantenerlos o dejar solamente anadirHitoBiografia(pHito:string) donde se 
+	añade el hito automaticamente a la biografia como lista de string. Creo que mejor lo segundo (Si os parece bien, hacer diagrama de secuencia)
 
 	-Hacer Diagrama de secuencia de setReserva de la clase Reserva.
 
 	-Hacer diagrama de secuencia de busquedaPorGenero(): Disco, busquedaPorTituloDisco(): Disco, busquedaPorTituloCancion(): Cancion, busquedaPorAutor(): Lista<Disco>.
 
-	-Hacer diagrama de secuencia de getDuracion() de Disco que no tiene ningun atributo duracion. Pero si tiene un metodo getDuracion() que nos devuelve el resultado de la suma de la duracion de todas las canciones de la lista tracklist.
+	-Hacer diagrama de secuencia de getDuracion() de Disco que no tiene ningun atributo duracion. Pero si tiene un metodo getDuracion() que nos devuelve
+	 el resultado de la suma de la duracion de todas las canciones de la lista tracklist.
 
