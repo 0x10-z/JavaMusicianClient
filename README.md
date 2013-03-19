@@ -3,7 +3,7 @@ JavaMusicianClient
 
 Music groups client based in Java
 
-Partners//Participantes:
+Partners:
 
 	-Iker Ocio Zuazo    <ikerocio@yahoo.es>
 	-Ander Arambalza    <aarambalza@gmail.com>
