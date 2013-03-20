@@ -1,5 +1,5 @@
 package packGroups;
 
-public class Grupo {
+public class Grupo extends SuperGrupo{
 
 }
