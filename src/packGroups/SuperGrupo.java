@@ -87,5 +87,6 @@ public class SuperGrupo {
 	public void addDisco(Disco disco) {
 		discografia.add(disco);
 	}
+	
 
 }
