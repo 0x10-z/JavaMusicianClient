@@ -21,7 +21,7 @@ public class Grupo extends SuperGrupo {
 		return listaIntegrantes;
 	}
 	
-	public void a–adirHito(String hito) {
+	public void anadirHito(String hito) {
 		
 	}
 	
