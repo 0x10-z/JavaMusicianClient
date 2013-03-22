@@ -1,5 +1,5 @@
 package packGroups;
 
-public class Artista{
+public class Reserva {
 
 }
