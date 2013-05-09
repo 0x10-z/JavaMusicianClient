@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import Interfaz.ManejoFicheros;
 
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
-
 
 public class VentanaArtistas extends JDialog {
 	private JScrollPane scrollPane;
@@ -58,21 +56,23 @@ public class VentanaArtistas extends JDialog {
 		}
 		return scrollPane;
 	}
+
 	private JList getList() {
-		/*if (list == null) {
+		if (list == null) {
 			DefaultListModel modelo = new DefaultListModel();
-			list = new JList();
+			list = new JList(modelo);
 			BufferedReader br = leerFichero(va.cargarFConfiguracion());
 			String linea;
-			try{
-				while((linea=br.readLine())!= null)
+			try {
+				while ((linea = br.readLine()) != null)
 					modelo.addElement(linea);
-			}catch(IOException e){
-				
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}*/
+		}
 		return list;
 	}
+
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("New button");
@@ -80,6 +80,7 @@ public class VentanaArtistas extends JDialog {
 		}
 		return btnNewButton;
 	}
+
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("New button");
@@ -87,30 +88,30 @@ public class VentanaArtistas extends JDialog {
 		}
 		return btnNewButton_1;
 	}
-	
-	/**Este metodo va en artistas
+
+	/**
+	 * Este metodo va en artistas
 	 * 
 	 */
-	private BufferedReader leerFichero(String path){
+	private BufferedReader leerFichero(String path) {
 		File archivo = null;
-	      FileReader fr = null;
-	      BufferedReader br = null;
-	 
-	      try {
-	         // Apertura del fichero y creacion de BufferedReader para poder
-	         // hacer una lectura comoda (disponer del metodo readLine()).
-	         archivo = new File (path);
-	         fr = new FileReader (archivo);
-	         br = new BufferedReader(fr);
-	 
-	         // Lectura del fichero
-	         String linea;
-	         while((linea=br.readLine())!=null)
-	            System.out.println(linea);
-	      }
-	      catch(Exception e){
-	         e.printStackTrace();
-	      }
-	      return br;
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			// Apertura del fichero y creacion de BufferedReader para poder
+			// hacer una lectura comoda (disponer del metodo readLine()).
+			archivo = new File(path);
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			// Lectura del fichero
+			String linea;
+			while ((linea = br.readLine()) != null)
+				System.out.println(linea);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return br;
 	}
 }
