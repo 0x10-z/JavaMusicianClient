@@ -152,6 +152,7 @@ public class ManejoFicheros {
 			// Apertura del fichero y creacion de BufferedReader para poder
 			// hacer una lectura comoda (disponer del metodo readLine()).
 			archivo = new File(path);
+			// Compruebo si el archivo ya existe
 			if (archivo.exists()) {
 				fr = new FileReader(archivo);
 				br = new BufferedReader(fr);
@@ -160,6 +161,8 @@ public class ManejoFicheros {
 				String linea;
 				while ((linea = br.readLine()) != null)
 					listaArtistas.add(linea);
+			} else {
+				System.out.println("Aun no hay archivo");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
