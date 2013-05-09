@@ -81,7 +81,7 @@ public class ManejoFicheros {
 	}
 
 	/**
-	 * 
+	 * Guardar en el fichero de configuracion la ruta
 	 */
 	public void guardarFConfiguracion(File archivoElegido) {
 		/**
@@ -110,6 +110,11 @@ public class ManejoFicheros {
 		}
 	}
 
+	/**
+	 * menu para cargar la fuente de datos
+	 * 
+	 * @return archivoElegido
+	 */
 	public File menuCargaFuenteDatos() {
 		File archivoElegido = null;
 		// Crear un objeto FileChooser
@@ -139,7 +144,7 @@ public class ManejoFicheros {
 	}
 
 	public String[] leerFichero(String path) {
-		File archivo = null;
+		File archivo;
 		FileReader fr = null;
 		BufferedReader br = null;
 		ArrayList<String> listaArtistas = new ArrayList();
@@ -147,13 +152,15 @@ public class ManejoFicheros {
 			// Apertura del fichero y creacion de BufferedReader para poder
 			// hacer una lectura comoda (disponer del metodo readLine()).
 			archivo = new File(path);
-			fr = new FileReader(archivo);
-			br = new BufferedReader(fr);
+			if (archivo.exists()) {
+				fr = new FileReader(archivo);
+				br = new BufferedReader(fr);
 
-			// Lectura del fichero
-			String linea;
-			while ((linea = br.readLine()) != null)
-				listaArtistas.add(linea);
+				// Lectura del fichero
+				String linea;
+				while ((linea = br.readLine()) != null)
+					listaArtistas.add(linea);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
