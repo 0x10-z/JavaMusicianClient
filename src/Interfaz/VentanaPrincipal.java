@@ -24,7 +24,7 @@ public class VentanaPrincipal extends JDialog {
 	VentanaArtistas va = new VentanaArtistas();
 
 	ManejoFicheros mn = new ManejoFicheros();
-	
+
 	/**
 	 * Launch the application.
 	 */
