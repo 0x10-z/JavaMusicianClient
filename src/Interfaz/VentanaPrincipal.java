@@ -45,21 +45,24 @@ public class VentanaPrincipal extends JDialog {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 
+		/*
+		 * Boton inciar
+		 */
 		JButton btnIniciar = new JButton("iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int n = JOptionPane.showConfirmDialog(null,
-						"Desea iniciar una fuente de datos nueva?",
-						"Venta Nueva", JOptionPane.YES_NO_OPTION);
+						"Desea iniciar una fuente de datos nueva?\nSi selecciona 'SI' sobreescribira la informacion guardada",
+						"Fuente de Datos", JOptionPane.YES_NO_OPTION);
+				/*
+				 * Control de respuesta del showConfirmDialog
+				 */
 				if (n == JOptionPane.YES_OPTION) {
 					// Escoger ruta
 					System.out.println("SI");
-
-					File archivoElegido = mn.cargarRuta();
-					/**
-					 * Guardar ruta para la proxima vez
-					 */
-					mn.guardarConfiguracionPath(archivoElegido);
+					File archivoElegido = mn.menuCargaFuenteDatos();
+					
+					
 
 					// Cargar fuente de datos
 
@@ -69,7 +72,7 @@ public class VentanaPrincipal extends JDialog {
 				} else if (n == JOptionPane.NO_OPTION) {
 					// Mirar si existe fichero con ruta. Si existe, bien, sino
 					// darle la opcion a escoger ruta
-					System.out.println("NO EXISTE");
+					System.out.println("Has seleccionado que no desea iniciar una fuente de datos nueva");
 
 					/**
 					 * Cargar del de configuracion
@@ -82,8 +85,11 @@ public class VentanaPrincipal extends JDialog {
 						JOptionPane
 								.showMessageDialog(null,
 										"No existe fuente de datos.\nSe procedera a cargar nueva fuente de datos");
-						mn.cargarRuta();
-						// Aqui habria que cargar la fuente dfe datos
+						File archivoElegido = mn.menuCargaFuenteDatos();
+						
+						
+						
+						// Aqui habria que cargar la fuente de datos
 						va.setVisible(true);
 						dispose();
 					} else {

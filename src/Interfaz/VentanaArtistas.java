@@ -13,18 +13,24 @@ import Interfaz.ManejoFicheros;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class VentanaArtistas extends JDialog {
-	private JScrollPane scrollPane;
 	private JList list;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
-	ManejoFicheros va = new ManejoFicheros();
+	ManejoFicheros mf = new ManejoFicheros();
+	private JScrollPane scrollPane;
+	private JList list_1;
+	private JList list_2;
+	private JButton btnNewButton_2;
 
 	/**
 	 * Launch the application.
@@ -45,44 +51,26 @@ public class VentanaArtistas extends JDialog {
 	public VentanaArtistas() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
-		getContentPane().add(getScrollPane());
 		getContentPane().add(getBtnNewButton());
 		getContentPane().add(getBtnNewButton_1());
+		getContentPane().add(getScrollPane_1());
+		getContentPane().add(getBtnNewButton_2());
 	}
 
-	private JScrollPane getScrollPane() {
-		if (scrollPane == null) {
-			scrollPane = new JScrollPane();
-			scrollPane.setBounds(52, 40, 227, 156);
-			scrollPane.setViewportView(getList());
-		}
-		return scrollPane;
-	}
-	private JList getList() {
-		/*if (list == null) {
-			DefaultListModel modelo = new DefaultListModel();
-			list = new JList();
-			BufferedReader br = leerFichero(va.cargarFConfiguracion());
-			String linea;
-			try{
-				while((linea=br.readLine())!= null)
-					modelo.addElement(linea);
-			}catch(IOException e){
-				
-			}
-		}*/
-		return list;
-	}
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
-			btnNewButton = new JButton("New button");
-			btnNewButton.setBounds(52, 207, 117, 25);
+			btnNewButton = new JButton("Buscar Artista");
+			btnNewButton.setBounds(34, 217, 156, 25);
 		}
 		return btnNewButton;
 	}
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("New button");
+			btnNewButton_1 = new JButton("Aceptar");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 			btnNewButton_1.setBounds(315, 37, 117, 25);
 		}
 		return btnNewButton_1;
@@ -91,7 +79,7 @@ public class VentanaArtistas extends JDialog {
 	/**Este metodo va en artistas
 	 * 
 	 */
-	private BufferedReader leerFichero(String path){
+	private BufferedReader leerFuenteDatos(String path){
 		File archivo = null;
 	      FileReader fr = null;
 	      BufferedReader br = null;
@@ -99,7 +87,11 @@ public class VentanaArtistas extends JDialog {
 	      try {
 	         // Apertura del fichero y creacion de BufferedReader para poder
 	         // hacer una lectura comoda (disponer del metodo readLine()).
+	    	 
 	         archivo = new File (path);
+	         while(!archivo.isFile()){
+	        	 JOptionPane.showInputDialog(null, "Path invalido");
+	         }
 	         fr = new FileReader (archivo);
 	         br = new BufferedReader(fr);
 	 
@@ -107,10 +99,47 @@ public class VentanaArtistas extends JDialog {
 	         String linea;
 	         while((linea=br.readLine())!=null)
 	            System.out.println(linea);
+	         
+	         
 	      }
 	      catch(Exception e){
 	         e.printStackTrace();
 	      }
 	      return br;
+	}
+	private JScrollPane getScrollPane_1() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setBounds(34, 38, 269, 167);
+			scrollPane.setViewportView(getList_2());
+		}
+		return scrollPane;
+	}
+	
+	private JList getList_2() {
+		if (list_2 == null) {
+			
+			//Esto nos devuelve un array de string con todos los artistas
+			String[] elementos = mf.leerFichero(mf.cargarFConfiguracion());
+			
+			list_2 = new JList(elementos);
+		}
+		return list_2;
+	}
+	private JButton getBtnNewButton_2() {
+		if (btnNewButton_2 == null) {
+			btnNewButton_2 = new JButton("Cargar nueva fuente");
+			btnNewButton_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					
+					/**
+					 * Aqui debe ir el codigo para cargar una nueva fuente de datos
+					 */
+					
+				}
+			});
+			btnNewButton_2.setBounds(243, 207, 193, 45);
+		}
+		return btnNewButton_2;
 	}
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 
@@ -42,23 +43,24 @@ public class ManejoFicheros {
 
 				pathValido = linea;
 			}
-			System.out.println(pathValido);
+
 			/**
 			 * Validar Path
 			 */
 			if (pathValido == null) {
-				System.out.println("Tratar el pathValido = null");
+				System.out
+						.println("No hay nada escrito en el fichero de configuracion");
 				path = "No existe";
 			} else {
 				File file2 = new File(pathValido);
 				if (file2.isFile()) {
-					System.out.println("Es file");
+					System.out.println("Es un archivo valido");
 					path = pathValido;
-					// Cargar fuente datos
+
 				} else {
-					System.out.println("No es file");
+					System.out.println("No es un archivo valido");
 					path = "No existe";
-					// Cargar nueva fuente de datos
+
 				}
 			}
 		} catch (Exception e) {
@@ -81,7 +83,7 @@ public class ManejoFicheros {
 	/**
 	 * 
 	 */
-	public void guardarConfiguracionPath(File archivoElegido) {
+	public void guardarFConfiguracion(File archivoElegido) {
 		/**
 		 * Guardar ruta para la proxima vez que abramos el programa
 		 */
@@ -108,7 +110,7 @@ public class ManejoFicheros {
 		}
 	}
 
-	public File cargarRuta() {
+	public File menuCargaFuenteDatos() {
 		File archivoElegido = null;
 		// Crear un objeto FileChooser
 		JFileChooser fc = new JFileChooser();
@@ -128,6 +130,50 @@ public class ManejoFicheros {
 			// archivoElegido.setText(archivoElegido.getName());
 
 		}
+		/*
+		 * Guardamos path de la fuente de datos en archivo de configuracion
+		 */
+		guardarFConfiguracion(archivoElegido);
+
 		return archivoElegido;
 	}
+
+	public String[] leerFichero(String path) {
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		ArrayList<String> listaArtistas = new ArrayList();
+		try {
+			// Apertura del fichero y creacion de BufferedReader para poder
+			// hacer una lectura comoda (disponer del metodo readLine()).
+			archivo = new File(path);
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			// Lectura del fichero
+			String linea;
+			while ((linea = br.readLine()) != null)
+				listaArtistas.add(linea);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// En el finally cerramos el fichero, para asegurarnos
+			// que se cierra tanto si todo va bien como si salta
+			// una excepcion.
+			try {
+				if (null != fr) {
+					fr.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		String[] lista = new String[listaArtistas.size()];
+		int i = 0;
+		for (String artista : listaArtistas) {
+			lista[i++] = artista;
+		}
+		return lista;
+	}
+
 }
