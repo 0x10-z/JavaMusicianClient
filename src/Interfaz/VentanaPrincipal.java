@@ -3,28 +3,18 @@ package Interfaz;
 import Interfaz.ManejoFicheros;
 import Interfaz.VentanaArtistas;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 
 public class VentanaPrincipal extends JDialog {
 	VentanaArtistas va = new VentanaArtistas();
 
 	ManejoFicheros mn = new ManejoFicheros();
-	
+
 	/**
 	 * Launch the application.
 	 */
