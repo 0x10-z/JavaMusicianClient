@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import Interfaz.ManejoFicheros;
 
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,7 +19,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 
 public class VentanaArtistas extends JDialog {
 	private JList list;
@@ -64,6 +62,7 @@ public class VentanaArtistas extends JDialog {
 		}
 		return btnNewButton;
 	}
+
 	private JButton getBtnNewButton_1() {
 		if (btnNewButton_1 == null) {
 			btnNewButton_1 = new JButton("Aceptar");
@@ -75,38 +74,38 @@ public class VentanaArtistas extends JDialog {
 		}
 		return btnNewButton_1;
 	}
-	
-	/**Este metodo va en artistas
+
+	/**
+	 * Este metodo va en artistas
 	 * 
 	 */
-	private BufferedReader leerFuenteDatos(String path){
+	private BufferedReader leerFuenteDatos(String path) {
 		File archivo = null;
-	      FileReader fr = null;
-	      BufferedReader br = null;
-	 
-	      try {
-	         // Apertura del fichero y creacion de BufferedReader para poder
-	         // hacer una lectura comoda (disponer del metodo readLine()).
-	    	 
-	         archivo = new File (path);
-	         while(!archivo.isFile()){
-	        	 JOptionPane.showInputDialog(null, "Path invalido");
-	         }
-	         fr = new FileReader (archivo);
-	         br = new BufferedReader(fr);
-	 
-	         // Lectura del fichero
-	         String linea;
-	         while((linea=br.readLine())!=null)
-	            System.out.println(linea);
-	         
-	         
-	      }
-	      catch(Exception e){
-	         e.printStackTrace();
-	      }
-	      return br;
+		FileReader fr = null;
+		BufferedReader br = null;
+
+		try {
+			// Apertura del fichero y creacion de BufferedReader para poder
+			// hacer una lectura comoda (disponer del metodo readLine()).
+
+			archivo = new File(path);
+			while (!archivo.isFile()) {
+				JOptionPane.showInputDialog(null, "Path invalido");
+			}
+			fr = new FileReader(archivo);
+			br = new BufferedReader(fr);
+
+			// Lectura del fichero
+			String linea;
+			while ((linea = br.readLine()) != null)
+				System.out.println(linea);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return br;
 	}
+
 	private JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -115,27 +114,34 @@ public class VentanaArtistas extends JDialog {
 		}
 		return scrollPane;
 	}
-	
+
+	// El problema esta cuando no hay nada en el archivo de configuracion
+	// al iniciar la aplicacion.
+	// Carga la fuente de datos del archivo de configuracion y no desde la propia fuente.
 	private JList getList_2() {
 		if (list_2 == null) {
-			
-			//Esto nos devuelve un array de string con todos los artistas
+			// Esto nos devuelve un array de string con todos los artistas
 			String[] elementos = mf.leerFichero(mf.cargarFConfiguracion());
-			
+			for (int i = 0; i < elementos.length; i++) {
+				System.out.println(i);
+			}
 			list_2 = new JList(elementos);
+
 		}
 		return list_2;
 	}
+
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
 			btnNewButton_2 = new JButton("Cargar nueva fuente");
 			btnNewButton_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					/**
-					 * Aqui debe ir el codigo para cargar una nueva fuente de datos
+					 * Aqui debe ir el codigo para cargar una nueva fuente de
+					 * datos
 					 */
-					
+
 				}
 			});
 			btnNewButton_2.setBounds(243, 207, 193, 45);
