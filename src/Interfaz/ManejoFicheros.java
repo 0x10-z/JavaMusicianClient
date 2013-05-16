@@ -143,6 +143,8 @@ public class ManejoFicheros {
 
 		return archivoElegido;
 	}
+	
+
 
 	public String[] leerFichero(String path) {
 		File archivo;
@@ -165,7 +167,7 @@ public class ManejoFicheros {
 				int cont = 0;
 				while((linea = br.readLine()) != null) {
 					for (int i = 0; i < linea.length(); i++) {
-						System.out.println(linea.charAt(i));
+						//System.out.println(linea.charAt(i));
 						if(linea.charAt(i) == ',') {
 							cont++;
 						}
