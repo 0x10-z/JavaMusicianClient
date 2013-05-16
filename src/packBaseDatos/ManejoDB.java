@@ -20,17 +20,6 @@ public class ManejoDB {
 		try {
 			con = establecerConexion();
 
-			Ejercicio4(con);
-			System.out.println("------------------------");
-			Ejercicio5(con);
-			System.out.println("------------------------");
-			Ejercicio6(con);
-			System.out.println("------------------------");
-			Ejercicio7(con);
-			System.out.println("------------------------");
-			Ejercicio8(con);
-			System.out.println("------------------------");
-			Ejercicio9(con);
 			cerrarConexion(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -50,7 +39,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 3. Haz un programa que abra y cierre la conexi贸n a la base de datos
+	 * 3. Haz un programa que abra y cierre la conexi梟 a la base de datos
 	 * osakidetza usando un driver de tipo4
 	 * 
 	 * @return
@@ -58,21 +47,14 @@ public class ManejoDB {
 	 */
 	public static Connection establecerConexion() throws SQLException {
 		Connection con;
-		
-
 
 		String url = "jdbc:mysql://db4free.net:3306/javamusica";
 		String user = "elequipob";
 		String psw = "elequipo3";
 		con = DriverManager.getConnection(url, user, psw);
-		
-		System.out.println("Conexion establecida");
-	
-		
-		
-		con = DriverManager.getConnection(url);
 
 		System.out.println("Conexion establecida");
+
 		return con;
 
 	}
@@ -87,7 +69,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 4. Muestra los nombres de los m茅dicos por pantalla
+	 * 4. Muestra los nombres de los m巇icos por pantalla
 	 * 
 	 * @param con
 	 */
@@ -112,7 +94,7 @@ public class ManejoDB {
 	/**
 	 * 5. Haz un programa que muestre la estructura (pares de nombreatributo
 	 * tipodatoatributo) de la tabla asegurado por pantalla(se supone que no
-	 * conocemos ni el n煤mero ni el tipo de los atributos)
+	 * conocemos ni el n渕ero ni el tipo de los atributos)
 	 * 
 	 * @param con
 	 */
@@ -137,7 +119,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 6. Muestra toda la informaci贸n de los m茅dicos, suponiendo que no
+	 * 6. Muestra toda la informaci梟 de los m巇icos, suponiendo que no
 	 * conocemos ni la cantidad ni los tipos de los atributos de dicha tabla
 	 * 
 	 * @param con
@@ -166,8 +148,8 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 7. Escribe un programa que borre los m茅dicos con c贸digo menor que 5 y que
-	 * nos indique el n煤mero de tuplas borradas.
+	 * 7. Escribe un programa que borre los m巇icos con c梔igo menor que 5 y que
+	 * nos indique el n渕ero de tuplas borradas.
 	 * 
 	 * @param con
 	 */
@@ -193,8 +175,8 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 8. Haz un programa que muestre la informaci贸n de los asegurados asignados
-	 * al c贸digo de m茅dico que nos indique el usuario
+	 * 8. Haz un programa que muestre la informaci梟 de los asegurados asignados
+	 * al c梔igo de m巇ico que nos indique el usuario
 	 * 
 	 * @param con
 	 */
@@ -271,9 +253,3 @@ public class ManejoDB {
 	}
 
 }
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="lib" path="/home/iocio/Descargas/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/Diego/Downloads/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
