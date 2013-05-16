@@ -15,7 +15,6 @@ public class ManejoDB {
 		Connection con;
 		String path = null;
 		try {
-<<<<<<< HEAD
 			//con = establecerConexion(path);
 			/////////////
 			//String url = "jdbc:mysql://localhost:3306/"+ "javamusica" + "?user=root";
@@ -41,8 +40,7 @@ public class ManejoDB {
 			///////////
 
 			//cerrarConexion(con);
-=======
-			con = establecerConexion();
+			//con = establecerConexion();
 /**
 			Ejercicio4(con);
 			System.out.println("------------------------");
@@ -56,8 +54,7 @@ public class ManejoDB {
 			System.out.println("------------------------");
 			Ejercicio9(con);
 			**/
-			cerrarConexion(con);
->>>>>>> 02e0feb080eabaadee56d88d493d03f239451a49
+			//cerrarConexion(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("No se ha podido establecer la conexion");
@@ -85,15 +82,9 @@ public class ManejoDB {
 	 */
 	public Connection establecerConexion() throws SQLException {
 		Connection con;
-<<<<<<< HEAD
 		//String url = "jdbc:mysql://localhost:3306/"+ "javamusica" + "?user=root";
 
-		String url= "jdbc:mysql://localhost:3306/javamusica";
-		String user = "root";
-		String psw = "";
 		
-		con = DriverManager.getConnection(url, user, psw);
-=======
 		System.out.println("Intentando conexion");
 		
 		//String url = "jdbc:mysql://db4free.net:3306/javamusica?user=elequipob&password=elequipo3";
@@ -107,7 +98,6 @@ public class ManejoDB {
 		con = DriverManager.getConnection(url, user, psw);
 		 
 		
->>>>>>> 02e0feb080eabaadee56d88d493d03f239451a49
 		System.out.println("Conexion establecida");
 		return con;
 
