@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 public class VentanaPrincipal extends JDialog {
-	VentanaArtistas va = new VentanaArtistas();
+	VentanaArtistas va;
 
 	ManejoFicheros mn = new ManejoFicheros();
 
@@ -58,6 +58,7 @@ public class VentanaPrincipal extends JDialog {
 					// Cargar fuente de datos
 
 					// Abrir ventana artistas
+					va = new VentanaArtistas();
 					va.setVisible(true);
 					dispose();
 				} else if (n == JOptionPane.NO_OPTION) {
@@ -80,10 +81,12 @@ public class VentanaPrincipal extends JDialog {
 						File archivoElegido = mn.menuCargaFuenteDatos();
 
 						// Aqui habria que cargar la fuente de datos
+						va = new VentanaArtistas();
 						va.setVisible(true);
 						dispose();
 					} else {
 						// Aqui habria que cargar la fuente dfe datos
+						va = new VentanaArtistas();
 						va.setVisible(true);
 						dispose();
 						// Cargar (llamar a VentanaArtistas)

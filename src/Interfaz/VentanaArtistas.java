@@ -36,6 +36,7 @@ public class VentanaArtistas extends JDialog {
 	public static void main(String[] args) {
 		try {
 			VentanaArtistas dialog = new VentanaArtistas();
+			
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -122,6 +123,7 @@ public class VentanaArtistas extends JDialog {
 	private JList getList_2() {
 		if (list_2 == null) {
 			// Esto nos devuelve un array de string con todos los artistas
+			System.out.println("ÀHay archivo?");
 			String[] elementos = mf.leerFichero(mf.cargarFConfiguracion());
 			for (int i = 0; i < elementos.length; i++) {
 				System.out.println(i);

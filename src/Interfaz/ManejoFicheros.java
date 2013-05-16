@@ -77,6 +77,7 @@ public class ManejoFicheros {
 				e2.printStackTrace();
 			}
 		}
+		System.out.println(path);
 		return path;
 	}
 
@@ -156,11 +157,31 @@ public class ManejoFicheros {
 			if (archivo.exists()) {
 				fr = new FileReader(archivo);
 				br = new BufferedReader(fr);
-
+ 
 				// Lectura del fichero
 				String linea;
-				while ((linea = br.readLine()) != null)
-					listaArtistas.add(linea);
+				/*while ((linea = br.readLine()) != null)
+					listaArtistas.add(linea);*/
+				int cont = 0;
+				while((linea = br.readLine()) != null) {
+					for (int i = 0; i < linea.length(); i++) {
+						System.out.println(linea.charAt(i));
+						if(linea.charAt(i) == ',') {
+							cont++;
+						}
+					}
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			} else {
 				System.out.println("Aun no hay archivo");
 			}
