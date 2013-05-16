@@ -117,7 +117,8 @@ public class VentanaArtistas extends JDialog {
 
 	// El problema esta cuando no hay nada en el archivo de configuracion
 	// al iniciar la aplicacion.
-	// Carga la fuente de datos del archivo de configuracion y no desde la propia fuente.
+	// Carga la fuente de datos del archivo de configuracion y no desde la
+	// propia fuente.
 	private JList getList_2() {
 		if (list_2 == null) {
 			// Esto nos devuelve un array de string con todos los artistas
