@@ -19,7 +19,22 @@ public class ManejoDB {
 		Connection con;
 		try {
 			con = establecerConexion();
+			// /////////////////////////////////////////
 
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM artista");
+			ResultSetMetaData metadata = rs.getMetaData();
+			int column = metadata.getColumnCount();
+			while (rs.next()) {
+				System.out.println("------");
+				for (int i = 1; i < column; i++) {
+					System.out.print(rs.getObject(i)+" | ");
+				}
+				System.out.println("\n------");
+
+			}
+			
+			// ///////////////////////////////////////////
 			cerrarConexion(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -62,6 +77,7 @@ public class ManejoDB {
 	public static void cerrarConexion(Connection con) {
 		try {
 			con.close();
+			System.out.println("Conexion cerrada");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
