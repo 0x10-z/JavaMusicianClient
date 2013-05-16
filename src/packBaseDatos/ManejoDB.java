@@ -14,7 +14,7 @@ public class ManejoDB {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		System.out.println("Cargando driver");
 		CargarDriver4();
 		Connection con;
 		try {
@@ -39,7 +39,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 3. Haz un programa que abra y cierre la conexi—n a la base de datos
+	 * 3. Haz un programa que abra y cierre la conexiï¿½n a la base de datos
 	 * osakidetza usando un driver de tipo4
 	 * 
 	 * @return
@@ -69,7 +69,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 4. Muestra los nombres de los mŽdicos por pantalla
+	 * 4. Muestra los nombres de los mï¿½dicos por pantalla
 	 * 
 	 * @param con
 	 */
@@ -94,7 +94,7 @@ public class ManejoDB {
 	/**
 	 * 5. Haz un programa que muestre la estructura (pares de nombreatributo
 	 * tipodatoatributo) de la tabla asegurado por pantalla(se supone que no
-	 * conocemos ni el nœmero ni el tipo de los atributos)
+	 * conocemos ni el nï¿½mero ni el tipo de los atributos)
 	 * 
 	 * @param con
 	 */
@@ -119,7 +119,7 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 6. Muestra toda la informaci—n de los mŽdicos, suponiendo que no
+	 * 6. Muestra toda la informaciï¿½n de los mï¿½dicos, suponiendo que no
 	 * conocemos ni la cantidad ni los tipos de los atributos de dicha tabla
 	 * 
 	 * @param con
@@ -148,8 +148,8 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 7. Escribe un programa que borre los mŽdicos con c—digo menor que 5 y que
-	 * nos indique el nœmero de tuplas borradas.
+	 * 7. Escribe un programa que borre los mï¿½dicos con cï¿½digo menor que 5 y que
+	 * nos indique el nï¿½mero de tuplas borradas.
 	 * 
 	 * @param con
 	 */
@@ -175,8 +175,8 @@ public class ManejoDB {
 	}
 
 	/**
-	 * 8. Haz un programa que muestre la informaci—n de los asegurados asignados
-	 * al c—digo de mŽdico que nos indique el usuario
+	 * 8. Haz un programa que muestre la informaciï¿½n de los asegurados asignados
+	 * al cï¿½digo de mï¿½dico que nos indique el usuario
 	 * 
 	 * @param con
 	 */
