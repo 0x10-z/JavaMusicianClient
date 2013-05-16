@@ -6,9 +6,13 @@ import Interfaz.VentanaArtistas;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+
+import packBaseDatos.ManejoDB;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.sql.SQLException;
 
 public class VentanaPrincipal extends JDialog {
 	VentanaArtistas va;
@@ -53,11 +57,26 @@ public class VentanaPrincipal extends JDialog {
 				if (n == JOptionPane.YES_OPTION) {
 					// Escoger ruta
 					System.out.println("SI");
-					File archivoElegido = mn.menuCargaFuenteDatos();
-
+					//File archivoElegido = mn.menuCargaFuenteDatos();
 					// Cargar fuente de datos
-
 					// Abrir ventana artistas
+					
+					// Pedir al usuario el nombre de la base de datos
+					String bdd = JOptionPane.showInputDialog("Introduce el nombre de la base de datos");
+					
+					System.out.println(bdd);
+					
+					String url = "jdbc:mysql://localhost:3306/"+ "javamusica" + "?user=root";
+					System.out.println(url);
+					ManejoDB db = new ManejoDB();
+					try {
+						System.out.println("entra");
+						db.establecerConexion();
+						System.out.println(bdd + " 1");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					va = new VentanaArtistas();
 					va.setVisible(true);
 					dispose();
