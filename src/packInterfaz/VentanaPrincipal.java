@@ -57,7 +57,7 @@ public class VentanaPrincipal extends JDialog {
 				if (n == JOptionPane.YES_OPTION) {
 					String host = null;
 					String user = null;
-					String psw = null;
+					String psw = "";
 					String[] datos = new String[3];
 					while (!db.probarConexion(host, user, psw)) {
 						datos = db.introducirDatosDB();

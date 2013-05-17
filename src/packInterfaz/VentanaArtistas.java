@@ -37,6 +37,8 @@ public class VentanaArtistas extends JDialog {
 	private JButton btnNewButton_3;
 	AnadirArtista aa;
 	private static ManejoDB mdb;
+	private Artista[] listaAr;
+
 	/**
 	 * Launch the application.
 	 */
@@ -98,6 +100,7 @@ public class VentanaArtistas extends JDialog {
 	 * Este metodo va en artistas
 	 * 
 	 */
+	// Esto metodo ya no se usa
 	private BufferedReader leerFuenteDatos(String path) {
 		File archivo = null;
 		FileReader fr = null;
@@ -134,13 +137,9 @@ public class VentanaArtistas extends JDialog {
 		return scrollPane;
 	}
 
-	// El problema esta cuando no hay nada en el archivo de configuracion
-	// al iniciar la aplicacion.
-	// Carga la fuente de datos del archivo de configuracion y no desde la
-	// propia fuente.
 	private JList getList_2() {
 		if (list_2 == null) {
-			Artista[] listaAr;
+			//Artista[] listaAr;
 			mdb = mdb.getInstance();
 			System.out.println("Se va a proceder al volcado de la bd");
 			listaAr = mdb.volcarBDaLista();
@@ -153,6 +152,7 @@ public class VentanaArtistas extends JDialog {
 		}
 		return list_2;
 	}
+	
 
 	private JButton getBtnNewButton_2() {
 		if (btnNewButton_2 == null) {
@@ -185,5 +185,9 @@ public class VentanaArtistas extends JDialog {
 			btnNewButton_3.setBounds(315, 88, 117, 25);
 		}
 		return btnNewButton_3;
+	}
+	
+	public Artista[] getList() {
+		return this.listaAr;
 	}
 }

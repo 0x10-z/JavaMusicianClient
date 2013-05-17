@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JList;
 
 import packBaseDatos.ManejoDB;
+import packFuncionalidad.Funcionalidad;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -67,10 +68,19 @@ public class BuscarArtista extends JDialog {
 			JButton btnNewButton = new JButton("BUSCAR");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					mdb = mdb.getInstance();
+					/*mdb = mdb.getInstance();
 					boolean existe;
 					existe = mdb.buscarArtista(textField.getText());
 					if(existe){
+						lblNewLabel_1.setText("Existe el artista "+textField.getText());
+					}else{
+						lblNewLabel_1.setText("Lo siento, no existe. Haz otro intento");
+					}*/
+					
+					Funcionalidad f = new Funcionalidad();
+					boolean existe;
+					existe = f.buscarArtista(textField.getText());
+					if(existe) {
 						lblNewLabel_1.setText("Existe el artista "+textField.getText());
 					}else{
 						lblNewLabel_1.setText("Lo siento, no existe. Haz otro intento");
