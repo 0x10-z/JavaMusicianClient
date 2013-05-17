@@ -37,6 +37,7 @@ public class VentanaArtistas extends JDialog {
 	private JButton btnNewButton_3;
 	AnadirArtista aa;
 	private static ManejoDB mdb;
+	BiografiaArtista bioArtista;
 	private Artista[] listaAr;
 
 	/**
@@ -89,6 +90,8 @@ public class VentanaArtistas extends JDialog {
 			btnNewButton_1 = new JButton("Aceptar");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					bioArtista = new BiografiaArtista(listaAr[list_2.getSelectedIndex()]);
+					bioArtista.setVisible(true);
 				}
 			});
 			btnNewButton_1.setBounds(315, 37, 117, 25);
