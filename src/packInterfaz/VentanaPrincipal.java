@@ -55,7 +55,18 @@ public class VentanaPrincipal extends JDialog {
 				 * Control de respuesta del showConfirmDialog
 				 */
 				if (n == JOptionPane.YES_OPTION) {
-
+					String host = null;
+					String user = null;
+					String psw = null;
+					String[] datos = new String[3];
+					while (!db.probarConexion(host, user, psw)) {
+						datos = db.introducirDatosDB();
+						host = datos[0];
+						user = datos[1];
+						psw = datos[2];
+						
+					}
+					
 					va = new VentanaArtistas();
 					va.setVisible(true);
 					dispose();
@@ -77,17 +88,11 @@ public class VentanaPrincipal extends JDialog {
 					 * para la bd
 					 */
 					while (!db.probarConexion(host, user, psw)) {
-						JOptionPane
-								.showMessageDialog(
-										null,
-										"No se ha establecido conexion con la db.\nIntroduce datos para una nueva conexion");
-						File archivoElegido = mn.menuCargaFuenteDatos();
-						host = JOptionPane
-								.showInputDialog("Introduce el host de la bd. Por Ejemplo: 'jdbc:mysql://localhost:3306/javamusica'");
-						user = JOptionPane
-								.showInputDialog("Introduce el usuario de la bd");
-						psw = JOptionPane
-								.showInputDialog("Introduce la contraseña");
+						datos = db.introducirDatosDB();
+						host = datos[0];
+						user = datos[1];
+						psw = datos[2];
+						
 					}
 
 					System.out.println("Conexion correcta con la db");

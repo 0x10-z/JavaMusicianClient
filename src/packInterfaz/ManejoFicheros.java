@@ -62,7 +62,7 @@ public class ManejoFicheros {
 	/**
 	 * Guardar en el fichero de configuracion la ruta
 	 */
-	public void guardarFConfiguracion(File archivoElegido) {
+	public void guardarFConfiguracion(String host, String user, String psw) {
 		/**
 		 * Guardar ruta para la proxima vez que abramos el programa
 		 */
@@ -73,7 +73,23 @@ public class ManejoFicheros {
 			fr = new FileWriter("configuracion", false);
 			pw = new PrintWriter(fr);
 
-			pw.println(archivoElegido.getPath());
+			for (int i = 0; i < 3; i++) {
+                switch (i) {
+				case 0:
+					pw.println(host);
+					break;
+
+				case 1:
+					pw.println(user);
+					break;
+					
+				case 2:
+					pw.println(psw);
+					break;
+				}
+                
+			}
+			System.out.println("Datos guardados en configuracion");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,7 +133,7 @@ public class ManejoFicheros {
 		/*
 		 * Guardamos path de la fuente de datos en archivo de configuracion
 		 */
-		guardarFConfiguracion(archivoElegido);
+		//guardarFConfiguracion(archivoElegido);
 
 		return archivoElegido;
 	}

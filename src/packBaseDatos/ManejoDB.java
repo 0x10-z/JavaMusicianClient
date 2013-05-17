@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import packGlobalEnums.Instrumentos;
 import packGroups.Artista;
 import packInterfaz.ManejoFicheros;
@@ -40,12 +42,12 @@ public class ManejoDB {
 			int column = metadata.getColumnCount();
 			while (rs.next()) {
 				System.out.println("Volcando base de datos a una lista...");
-				for (int i = 1; i < column; i++) {
+				//for (int i = 1; i < column; i++) {
 					artista = new Artista(rs.getString("nombre"),
 							rs.getString("alias"), rs.getInt("edad"),
 							Instrumentos.ARPA);
 					lista.add(artista);
-				}
+				//}
 			}
 
 			cerrarConexion(con);
@@ -71,15 +73,19 @@ public class ManejoDB {
 		try {
 			con = DriverManager.getConnection(url, user, psw);
 			System.out.println("Conexion establecida");
+			// Llamar al metodo para guardar los datos en configuracion
+			
+			mn.guardarFConfiguracion(url, user, psw);
+			
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out
 					.println("No se ha podido establecer conexion con la base de datos");
 			return false;
-		} finally {
-			cerrarConexion(con);
+		//} finally {
+			//cerrarConexion(con);
 		}
 
 	}
@@ -235,6 +241,20 @@ public class ManejoDB {
 		cerrarConexion(con);
 		// insert into artista (nombre, alias, edad, disponible) values ("iker",
 		// "ik", 21, 'n');
+	}
+	
+	public String[] introducirDatosDB() {
+		String[] datos;
+		JOptionPane.showMessageDialog(null,
+										"No se ha establecido conexion con la db.\nIntroduce datos para una nueva conexion");
+		host = JOptionPane
+				.showInputDialog("Introduce el host de la bd. Por Ejemplo: 'jdbc:mysql://localhost:3306/javamusica'");
+		user = JOptionPane
+				.showInputDialog("Introduce el usuario de la bd");
+		psw = JOptionPane
+				.showInputDialog("Introduce la contrasena");
+		
+		return  datos = new String[]{host, user, psw};
 	}
 
 }
