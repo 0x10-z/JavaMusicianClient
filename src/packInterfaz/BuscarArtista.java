@@ -23,6 +23,7 @@ public class BuscarArtista extends JDialog {
 	private JTextField textField;
 	private static ManejoDB mdb;
 	private JLabel lblNewLabel_1;
+	private JButton btnNewButton_1;
 	/**
 	 * Launch the application.
 	 */
@@ -80,5 +81,18 @@ public class BuscarArtista extends JDialog {
 			btnNewButton.setBounds(116, 173, 211, 39);
 			contentPanel.add(btnNewButton);
 		}
+		contentPanel.add(getBtnNewButton_1());
+	}
+	private JButton getBtnNewButton_1() {
+		if (btnNewButton_1 == null) {
+			btnNewButton_1 = new JButton("Volver");
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					setVisible(false);
+				}
+			});
+			btnNewButton_1.setBounds(319, 12, 117, 25);
+		}
+		return btnNewButton_1;
 	}
 }

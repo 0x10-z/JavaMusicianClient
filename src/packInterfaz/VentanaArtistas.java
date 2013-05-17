@@ -43,7 +43,7 @@ public class VentanaArtistas extends JDialog {
 	public static void main(String[] args) {
 		try {
 			VentanaArtistas dialog = new VentanaArtistas();
-			
+
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -71,7 +71,9 @@ public class VentanaArtistas extends JDialog {
 				public void actionPerformed(ActionEvent arg0) {
 					ba = new BuscarArtista();
 					ba.setVisible(true);
-					dispose();
+					ba.setModal(true);
+					setModal(false);
+					//dispose();
 					
 				}
 			});
