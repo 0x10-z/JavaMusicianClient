@@ -1,13 +1,12 @@
-package Interfaz;
-
-import Interfaz.ManejoFicheros;
-import Interfaz.VentanaArtistas;
+package packInterfaz;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import packBaseDatos.ManejoDB;
+import packInterfaz.ManejoFicheros;
+import packInterfaz.VentanaArtistas;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 
 public class VentanaPrincipal extends JDialog {
 	VentanaArtistas va;
-
+	private static ManejoDB db;
 	ManejoFicheros mn = new ManejoFicheros();
 
 	/**
@@ -36,6 +35,7 @@ public class VentanaPrincipal extends JDialog {
 	 * Create the dialog.
 	 */
 	public VentanaPrincipal() {
+		db = db.getInstance();
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 
@@ -55,28 +55,18 @@ public class VentanaPrincipal extends JDialog {
 				 * Control de respuesta del showConfirmDialog
 				 */
 				if (n == JOptionPane.YES_OPTION) {
-					// Escoger ruta
-					System.out.println("SI");
-					//File archivoElegido = mn.menuCargaFuenteDatos();
-					// Cargar fuente de datos
-					// Abrir ventana artistas
-					
-					// Pedir al usuario el nombre de la base de datos
-					String bdd = JOptionPane.showInputDialog("Introduce el nombre de la base de datos");
-					
-					System.out.println(bdd);
-					
-					String url = "jdbc:mysql://localhost:3306/"+ "javamusica" + "?user=root";
-					System.out.println(url);
-					ManejoDB db = new ManejoDB();
-					try {
-						System.out.println("entra");
-						db.establecerConexion();
-						System.out.println(bdd + " 1");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					String host = null;
+					String user = null;
+					String psw = "";
+					String[] datos = new String[3];
+					while (!db.probarConexion(host, user, psw)) {
+						datos = db.introducirDatosDB();
+						host = datos[0];
+						user = datos[1];
+						psw = datos[2];
+						
 					}
+					
 					va = new VentanaArtistas();
 					va.setVisible(true);
 					dispose();
@@ -89,27 +79,32 @@ public class VentanaPrincipal extends JDialog {
 					/**
 					 * Cargar del de configuracion
 					 */
-					String path = mn.cargarFConfiguracion();
-					// Metodo de la clase Artista que le pasemos el path y se
-					// cargue alli todo
-
-					if (path.equals("No existe")) {
-						JOptionPane
-								.showMessageDialog(null,
-										"No existe fuente de datos.\nSe procedera a cargar nueva fuente de datos");
-						File archivoElegido = mn.menuCargaFuenteDatos();
-
-						// Aqui habria que cargar la fuente de datos
-						va = new VentanaArtistas();
-						va.setVisible(true);
-						dispose();
-					} else {
-						// Aqui habria que cargar la fuente dfe datos
-						va = new VentanaArtistas();
-						va.setVisible(true);
-						dispose();
-						// Cargar (llamar a VentanaArtistas)
+					String[] datos = mn.cargarFConfiguracion();
+					String host = datos[0];
+					String user = datos[1];
+					String psw = datos[2];
+					/**
+					 * Esto prueba si los datos de configuracion son validos
+					 * para la bd
+					 */
+					while (!db.probarConexion(host, user, psw)) {
+						datos = db.introducirDatosDB();
+						host = datos[0];
+						user = datos[1];
+						psw = datos[2];
+						
 					}
+
+					System.out.println("Conexion correcta con la db");
+					// Aqui habria que cargar la fuente de datos
+					
+					
+					
+					va = new VentanaArtistas();
+					va.setVisible(true);
+					dispose();
+					// Cargar (llamar a VentanaArtistas)
+
 					// --------------------
 				}
 				dispose();

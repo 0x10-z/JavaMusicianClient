@@ -1,4 +1,4 @@
-package Interfaz;
+package packInterfaz;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,11 +19,11 @@ public class ManejoFicheros {
 	 * 
 	 * 
 	 */
-	public String cargarFConfiguracion() {
+	public String[] cargarFConfiguracion() {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
-		String path = null;
+		String[] datos = new String[3];
 
 		try {
 			// Apertura del fichero y creacion de BufferedReader
@@ -34,35 +34,14 @@ public class ManejoFicheros {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
-			// Lectura del fichero
+			// Lectura del fichero. [0]=host [1]=user [2]=psw;
 			String linea;
-			String pathValido = null;
-			while ((linea = br.readLine()) != null) {
-				// Crear variable que vaya aumentando y seleccione cada vez un
-				// case distinto
-
-				pathValido = linea;
+			int i = 0;
+			while ((linea = br.readLine()) != null || i < 2) {
+				datos[i] = linea;
+				i++;
 			}
-
-			/**
-			 * Validar Path
-			 */
-			if (pathValido == null) {
-				System.out
-						.println("No hay nada escrito en el fichero de configuracion");
-				path = "No existe";
-			} else {
-				File file2 = new File(pathValido);
-				if (file2.isFile()) {
-					System.out.println("Es un archivo valido");
-					path = pathValido;
-
-				} else {
-					System.out.println("No es un archivo valido");
-					path = "No existe";
-
-				}
-			}
+			return datos;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -77,14 +56,13 @@ public class ManejoFicheros {
 				e2.printStackTrace();
 			}
 		}
-		System.out.println(path);
-		return path;
+		return datos;
 	}
 
 	/**
 	 * Guardar en el fichero de configuracion la ruta
 	 */
-	public void guardarFConfiguracion(File archivoElegido) {
+	public void guardarFConfiguracion(String host, String user, String psw) {
 		/**
 		 * Guardar ruta para la proxima vez que abramos el programa
 		 */
@@ -95,7 +73,23 @@ public class ManejoFicheros {
 			fr = new FileWriter("configuracion", false);
 			pw = new PrintWriter(fr);
 
-			pw.println(archivoElegido.getPath());
+			for (int i = 0; i < 3; i++) {
+                switch (i) {
+				case 0:
+					pw.println(host);
+					break;
+
+				case 1:
+					pw.println(user);
+					break;
+					
+				case 2:
+					pw.println(psw);
+					break;
+				}
+                
+			}
+			System.out.println("Datos guardados en configuracion");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -139,12 +133,10 @@ public class ManejoFicheros {
 		/*
 		 * Guardamos path de la fuente de datos en archivo de configuracion
 		 */
-		guardarFConfiguracion(archivoElegido);
+		//guardarFConfiguracion(archivoElegido);
 
 		return archivoElegido;
 	}
-	
-
 
 	public String[] leerFichero(String path) {
 		File archivo;
@@ -159,31 +151,24 @@ public class ManejoFicheros {
 			if (archivo.exists()) {
 				fr = new FileReader(archivo);
 				br = new BufferedReader(fr);
- 
+
 				// Lectura del fichero
 				String linea;
-				/*while ((linea = br.readLine()) != null)
-					listaArtistas.add(linea);*/
+				/*
+				 * while ((linea = br.readLine()) != null)
+				 * listaArtistas.add(linea);
+				 */
 				int cont = 0;
-				while((linea = br.readLine()) != null) {
+				while ((linea = br.readLine()) != null) {
 					for (int i = 0; i < linea.length(); i++) {
-						//System.out.println(linea.charAt(i));
-						if(linea.charAt(i) == ',') {
+						// System.out.println(linea.charAt(i));
+						if (linea.charAt(i) == ',') {
 							cont++;
 						}
 					}
-					
+
 				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+
 			} else {
 				System.out.println("Aun no hay archivo");
 			}

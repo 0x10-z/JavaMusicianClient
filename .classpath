@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="lib" path="/home/iocio/Descargas/mysql-connector-java-5.0.4-bin.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
