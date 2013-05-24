@@ -103,7 +103,7 @@ public class VentanaArtistas extends JDialog {
 	 * Este metodo va en artistas
 	 * 
 	 */
-	// Esto metodo ya no se usa
+	// Deprecated
 	private BufferedReader leerFuenteDatos(String path) {
 		File archivo = null;
 		FileReader fr = null;
